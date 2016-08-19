@@ -7,7 +7,7 @@ public class Decrypt {
 
 	public static void main(String[] args) {
 		char[] myCipher = { 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k',
-				'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ' ', '.'};
+				'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ' ', '.' };
 		char[] theAlphaBet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
 				's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', '.' };
 
@@ -16,39 +16,29 @@ public class Decrypt {
 		boolean wordIsValid = false;
 		String userInput;
 
-		
 		Scanner keyboard = new Scanner(System.in);
-		do{
-		System.out.println("Please enter what you would like to encrypt");
-		System.out.println("Please do not enter Special Characters or Numbers.");
-		System.out.println();
-		userInput = keyboard.nextLine();
-		
-		wordIsValid = wordIsValid(userInput);
+		do {
+			System.out.println("Please enter what you would like to encrypt");
+			System.out.println("Please do not enter Special Characters or Numbers.");
+			System.out.println();
+			userInput = keyboard.nextLine();
 
-		
-		}while(wordIsValid);
-		
-		
-		
+			wordIsValid = wordIsValid(userInput);
+
+		} while (wordIsValid);
+
 		int arraylength = userInput.length();
 
 		char[] encryptedWord = new char[userInput.length()];
 		encryptedWord = new char[arraylength];
 		char[] wordToEncrypt = new char[userInput.length()];
-		
-		
-		wordToEncrypt = userInput.toLowerCase().toCharArray();
-		
-		
 
-		
-		
+		wordToEncrypt = userInput.toLowerCase().toCharArray();
+
 		while (!(wordIsValid)) {
 			String choice = null;
 			System.out.println();
-			System.out.println("Would you like to: \n"
-							+ "Encrypt (1) \n" + "Decrypt (2)\n" + "Exit (3)");
+			System.out.println("Would you like to: \n" + "Encrypt (1) \n" + "Decrypt (2)\n" + "Exit (3)");
 			System.out.println();
 			System.out.println();
 			choice = keyboard.nextLine();
@@ -61,24 +51,24 @@ public class Decrypt {
 				System.out.println();
 				wordIsValid = false;
 				break;
-				
-			case "2":
-				try{
-				char[] wordToDecrypt = new char[userInput.length()];
-				myDecryptor(myCipher, theAlphaBet, userInput, encryptedWord, wordToDecrypt);
 
-				decryptedOutput = String.valueOf(wordToDecrypt);
-				System.out.println("Here is the Decrypted Sentence:");
-				System.out.println(decryptedOutput);
-				System.out.println();
-				wordIsValid = false;
-				}catch (IndexOutOfBoundsException e){
+			case "2":
+				try {
+					char[] wordToDecrypt = new char[userInput.length()];
+					myDecryptor(myCipher, theAlphaBet, userInput, encryptedWord, wordToDecrypt);
+
+					decryptedOutput = String.valueOf(wordToDecrypt);
+					System.out.println("Here is the Decrypted Sentence:");
+					System.out.println(decryptedOutput);
+					System.out.println();
+					wordIsValid = false;
+				} catch (IndexOutOfBoundsException e) {
 					e.getStackTrace();
 				}
 				break;
-				
+
 			case "3":
-				
+
 				System.out.println("Thank You for using our app!");
 				System.out.println("Goodbye");
 				System.exit(0);
@@ -87,11 +77,9 @@ public class Decrypt {
 			default:
 				break;
 			}
-			
+
 		}
-		
-		
-		
+
 	}
 
 	private static void myDecryptor(char[] myCipher, char[] theAlphaBet, String userInput, char[] encryptedWord,
@@ -108,7 +96,7 @@ public class Decrypt {
 
 		}
 	}
-	
+
 	public static boolean wordIsValid(String someStringWithNoNumber) {
 
 		if (someStringWithNoNumber.matches(".*\\d+.*")) {
@@ -117,7 +105,7 @@ public class Decrypt {
 
 		} else {
 			return false;
-}
+		}
 	}
 
 	private static void myEncrypt(char[] myCipher, char[] theAlphaBet, String userInput, char[] encryptedWord,
